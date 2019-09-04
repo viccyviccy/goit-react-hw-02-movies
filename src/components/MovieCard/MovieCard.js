@@ -1,16 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import design from './MovieCard.module.css';
 
-const MovieCard = ({ items }) => {
-  return items.map(item => (
-    <div className={design.movie_card} key={item.id}>
-      <img src={item.posterUrl} alt="" />
+const MovieCard = ({ id, posterUrl, title, overview }) => {
+  // const { id, title, overview, posterUrl } = items;
+  return (
+    <li className={design.movie_card} key={id}>
+      <img src={posterUrl} alt="" />
       <div className={design.content}>
-        <h2 className={design.title}>{item.title}</h2>
-        <p className={design.descr}>{item.overview}</p>
+        <h2 className={design.title}>{title}</h2>
+        <p className={design.descr}>{overview}</p>
       </div>
-    </div>
-  ));
+    </li>
+  );
+};
+
+MovieCard.propTypes = {
+  id: PropTypes.number,
+  posterUrl: PropTypes.string,
+  title: PropTypes.string,
+  overview: PropTypes.string,
 };
 
 export default MovieCard;
